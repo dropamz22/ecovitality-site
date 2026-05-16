@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ecovitality — Корейские витамины и БАДы</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #0D4A35;
+  --green-mid: #1a6b4f;
+  --green-light: #e8f0ec;
+  --gold: #C4A882;
+  --gold-light: #e8d9c4;
+  --cream: #F9F6F1;
+  --dark: #1a1a1a;
+  --text: #2d2d2d;
+  --text-light: #6b6b6b;
+  --white: #ffffff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* HEADER */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  background: rgba(249,246,241,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,168,130,0.25);
+}
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--green); letter-spacing: 3px; text-decoration: none; }
+nav { display: flex; gap: 36px; align-items: center; }
+nav a { font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color 0.2s; position: relative; }
+nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease; }
+nav a:hover { color: var(--green); }
+nav a:hover::after { transform: scaleX(1); }
+.header-right { display: flex; gap: 20px; align-items: center; }
+.lang-switch { display: flex; gap: 4px; }
+.lang-btn { font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--text-light); background: none; border: 1px solid transparent; cursor: pointer; padding: 4px 10px; border-radius: 2px; transition: all 0.2s; font-family: 'Jost', sans-serif; }
+.lang-btn.active { background: var(--green); color: var(--white); }
+.lang-btn:hover:not(.active) { border-color: var(--gold); color: var(--green); }
+.tg-btn { display: flex; align-items: center; gap: 8px; padding: 10px 22px; background: var(--green); color: var(--white); border: none; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: background 0.3s; }
+.tg-btn:hover { background: var(--green-mid); }
+
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; }
+.hero-left { background: var(--green); padding: 100px 70px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-left::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: rgba(196,168,130,0.07); }
+.hero-left::after { content: ''; position: absolute; bottom: -80px; left: -60px; width: 350px; height: 350px; border-radius: 50%; background: rgba(196,168,130,0.05); }
+.hero-tag { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; position: relative; z-index: 1; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; line-height: 1.1; color: var(--white); margin-bottom: 16px; position: relative; z-index: 1; }
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-subtitle { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.75); margin-bottom: 48px; max-width: 380px; position: relative; z-index: 1; }
+.hero-actions { display: flex; gap: 16px; align-items: center; position: relative; z-index: 1; }
+.btn-primary { padding: 16px 40px; background: var(--gold); color: var(--green); border: none; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all 0.3s; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-secondary { padding: 16px 40px; background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.4); cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: all 0.3s; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-stats { display: flex; gap: 40px; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(196,168,130,0.2); position: relative; z-index: 1; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--gold); display: block; }
+.stat-label { font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.hero-right { background: var(--cream); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px; position: relative; }
+.hero-image-placeholder { width: 100%; max-width: 420px; aspect-ratio: 3/4; background: linear-gradient(145deg, var(--green-light) 0%, rgba(196,168,130,0.15) 100%); border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; position: relative; overflow: hidden; }
+.hero-image-placeholder::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gold); }
+.hero-badge { position: absolute; top: 24px; right: 24px; background: var(--green); color: var(--white); padding: 8px 16px; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+.product-icon { font-size: 80px; opacity: 0.3; }
+.product-hint { font-size: 12px; color: var(--text-light); letter-spacing: 1px; }
+
+/* MARQUEE */
+.marquee-wrap { background: var(--green); padding: 16px 0; overflow: hidden; }
+.marquee { display: flex; gap: 0; animation: marquee 20s linear infinite; white-space: nowrap; }
+.marquee-item { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); padding: 0 40px; }
+.marquee-dot { color: rgba(196,168,130,0.4); }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ABOUT STRIP */
+.about-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid rgba(196,168,130,0.2); }
+.about-item { padding: 48px 40px; border-right: 1px solid rgba(196,168,130,0.2); display: flex; flex-direction: column; gap: 12px; transition: background 0.3s; }
+.about-item:last-child { border-right: none; }
+.about-item:hover { background: var(--green-light); }
+.about-icon { font-size: 28px; }
+.about-title { font-size: 14px; font-weight: 600; color: var(--green); letter-spacing: 0.5px; }
+.about-text { font-size: 13px; font-weight: 300; color: var(--text-light); line-height: 1.6; }
+
+/* SECTION */
+section { padding: 100px 60px; }
+.section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 60px; }
+.section-tag { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--green); line-height: 1.2; }
+.section-title em { font-style: italic; }
+.view-all { font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--green); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 4px; transition: all 0.2s; }
+.view-all:hover { color: var(--gold); }
+
+/* CATEGORIES */
+.categories { background: var(--white); }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(196,168,130,0.2); }
+.cat-card { background: var(--white); padding: 40px 32px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.cat-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
+.cat-card:hover { background: var(--green); }
+.cat-card:hover::after { transform: scaleX(1); }
+.cat-card:hover .cat-name { color: var(--white); }
+.cat-card:hover .cat-count { color: var(--gold); }
+.cat-card:hover .cat-icon { transform: scale(1.1); }
+.cat-icon { font-size: 40px; display: block; margin-bottom: 20px; transition: transform 0.3s; }
+.cat-name { font-size: 15px; font-weight: 500; color: var(--green); margin-bottom: 6px; transition: color 0.3s; }
+.cat-count { font-size: 12px; color: var(--text-light); letter-spacing: 1px; transition: color 0.3s; }
+
+/* PRODUCTS */
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.product-card { background: var(--white); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(13,74,53,0.12); }
+.product-img { aspect-ratio: 1; background: var(--green-light); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; font-size: 60px; }
+.product-badge { position: absolute; top: 16px; left: 16px; background: var(--green); color: var(--white); padding: 6px 12px; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+.product-badge.new { background: var(--gold); color: var(--green); }
+.product-info { padding: 24px; }
+.product-brand { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.product-name { font-size: 16px; font-weight: 500; color: var(--green); margin-bottom: 12px; line-height: 1.4; }
+.product-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 20px; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; }
+.product-price { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--green); }
+.add-btn { width: 42px; height: 42px; background: var(--green); color: var(--white); border: none; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+.add-btn:hover { background: var(--gold); }
+
+/* WHY US */
+.why { background: var(--green); }
+.why .section-tag { color: var(--gold); }
+.why .section-title { color: var(--white); }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(196,168,130,0.15); margin-top: 60px; }
+.why-item { padding: 48px 40px; background: var(--green); }
+.why-num { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: rgba(196,168,130,0.2); line-height: 1; margin-bottom: 16px; }
+.why-title { font-size: 18px; font-weight: 500; color: var(--white); margin-bottom: 12px; }
+.why-text { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+/* TELEGRAM CTA */
+.tg-cta { background: var(--cream); text-align: center; padding: 100px 60px; }
+.tg-cta .section-tag { display: block; text-align: center; margin-bottom: 20px; }
+.tg-cta .section-title { text-align: center; margin-bottom: 20px; }
+.tg-cta-text { font-size: 16px; color: var(--text-light); margin-bottom: 48px; line-height: 1.7; max-width: 500px; margin-left: auto; margin-right: auto; }
+.tg-features { display: flex; justify-content: center; gap: 48px; margin-bottom: 48px; flex-wrap: wrap; }
+.tg-feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); }
+.tg-feature-icon { color: var(--green); font-size: 18px; }
+
+/* FOOTER */
+footer { background: var(--green); padding: 60px 60px 40px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(196,168,130,0.15); }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--gold); letter-spacing: 3px; margin-bottom: 16px; display: block; }
+.footer-about { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
+.footer-social { display: flex; gap: 12px; }
+.social-link { width: 36px; height: 36px; border: 1px solid rgba(196,168,130,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; font-size: 14px; transition: all 0.2s; }
+.social-link:hover { background: var(--gold); color: var(--green); }
+.footer-title { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-tg { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gold); text-decoration: none; letter-spacing: 1px; }
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  header { padding: 16px 24px; }
+  nav { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 60px 32px; }
+  .hero-title { font-size: 52px; }
+  section { padding: 60px 24px; }
+  .about-strip { grid-template-columns: repeat(2, 1fr); }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .tg-features { gap: 24px; }
+}
+
+@media (max-width: 640px) {
+  .hero-title { font-size: 40px; }
+  .hero-stats { gap: 24px; }
+  .about-strip { grid-template-columns: 1fr; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .products-grid { grid-template-columns: 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .footer-top { grid-template-columns: 1fr; }
+}
+
+/* ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(24px); animation: fadeIn 0.7s ease forwards; }
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">ecovitality</a>
+  <nav>
+    <a href="#catalog" data-ru="Каталог" data-kz="Каталог">Каталог</a>
+    <a href="#about" data-ru="О нас" data-kz="Біз туралы">О нас</a>
+    <a href="#delivery" data-ru="Доставка" data-kz="Жеткізу">Доставка</a>
+    <a href="#contacts" data-ru="Контакты" data-kz="Байланыс">Контакты</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('ru')">РУ</button>
+      <button class="lang-btn" onclick="setLang('kz')">ҚАЗ</button>
+    </div>
+    <a href="https://t.me/ECOVITALITY_BOT" target="_blank" class="tg-btn">
+      ✈ <span data-ru="Открыть бот" data-kz="Бот ашу">Открыть бот</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag fade-in" data-ru="Оригинальная корейская продукция" data-kz="Түпнұсқа корей өнімдері">Оригинальная корейская продукция</p>
+    <h1 class="hero-title fade-in delay-1">
+      <span data-ru="Витамины для" data-kz="Денсаулық үшін">Витамины для</span><br>
+      <em><span data-ru="вашего" data-kz="сіздің">вашего</span></em><br>
+      <span data-ru="здоровья" data-kz="витаминдер">здоровья</span>
+    </h1>
+    <p class="hero-subtitle fade-in delay-2" data-ru="Прямые поставки из Кореи. Сертифицированные БАДы, витамины и косметика для вашего здоровья и красоты." data-kz="Кореядан тікелей жеткізу. Денсаулық пен сұлулық үшін сертификатталған БАД, витаминдер және косметика.">
+      Прямые поставки из Кореи. Сертифицированные БАДы, витамины и косметика для вашего здоровья и красоты.
+    </p>
+    <div class="hero-actions fade-in delay-3">
+      <a href="#catalog" class="btn-primary" data-ru="Смотреть каталог" data-kz="Каталогты қарау">Смотреть каталог</a>
+      <a href="https://t.me/ECOVITALITY_BOT" target="_blank" class="btn-secondary" data-ru="Написать в Telegram" data-kz="Telegram жазу">Написать в Telegram</a>
+    </div>
+    <div class="hero-stats fade-in delay-4">
+      <div>
+        <span class="stat-num">900+</span>
+        <span class="stat-label" data-ru="Товаров" data-kz="Тауар">Товаров</span>
+      </div>
+      <div>
+        <span class="stat-num">21</span>
+        <span class="stat-label" data-ru="Категория" data-kz="Санат">Категория</span>
+      </div>
+      <div>
+        <span class="stat-num">100%</span>
+        <span class="stat-label" data-ru="Оригинал" data-kz="Түпнұсқа">Оригинал</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-placeholder">
+      <div class="hero-badge" data-ru="Новинка" data-kz="Жаңалық">Новинка</div>
+      <div class="product-icon">🌿</div>
+      <p class="product-hint" data-ru="Корейские витамины" data-kz="Корей витаминдері">Корейские витамины</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee" id="marquee">
+    <span class="marquee-item">Коллаген <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Витамин D <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Пробиотики <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Омега-3 <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Глутатион <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Женьшень <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Биотин <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Мультивитамины <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Коллаген <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Витамин D <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Пробиотики <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Омега-3 <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Глутатион <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Женьшень <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Биотин <span class="marquee-dot">✦</span></span>
+    <span class="marquee-item">Мультивитамины <span class="marquee-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip" id="about">
+  <div class="about-item">
+    <span class="about-icon">🇰🇷</span>
+    <div class="about-title" data-ru="Прямые поставки" data-kz="Тікелей жеткізу">Прямые поставки</div>
+    <div class="about-text" data-ru="Импортируем напрямую из Кореи без посредников" data-kz="Делдалсыз Кореядан тікелей әкелеміз">Импортируем напрямую из Кореи без посредников</div>
+  </div>
+  <div class="about-item">
+    <span class="about-icon">✅</span>
+    <div class="about-title" data-ru="Сертификаты качества" data-kz="Сапа сертификаттары">Сертификаты качества</div>
+    <div class="about-text" data-ru="Вся продукция сертифицирована и прошла проверку" data-kz="Барлық өнімдер сертификатталған және тексерілген">Вся продукция сертифицирована и прошла проверку</div>
+  </div>
+  <div class="about-item">
+    <span class="about-icon">🚚</span>
+    <div class="about-title" data-ru="Быстрая доставка" data-kz="Жылдам жеткізу">Быстрая доставка</div>
+    <div class="about-text" data-ru="Доставляем по всему Казахстану" data-kz="Бүкіл Қазақстан бойынша жеткіземіз">Доставляем по всему Казахстану</div>
+  </div>
+  <div class="about-item">
+    <span class="about-icon">💬</span>
+    <div class="about-title" data-ru="Консультация" data-kz="Кеңес беру">Консультация</div>
+    <div class="about-text" data-ru="Поможем подобрать витамины под ваши цели" data-kz="Мақсатыңызға сай витаминдерді таңдауға көмектесеміз">Поможем подобрать витамины под ваши цели</div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories" id="catalog">
+  <div class="section-header">
+    <div>
+      <p class="section-tag" data-ru="Наш ассортимент" data-kz="Біздің ассортимент">Наш ассортимент</p>
+      <h2 class="section-title" data-ru="Категории <em>товаров</em>" data-kz="Тауар <em>санаттары</em>">Категории <em>товаров</em></h2>
+    </div>
+    <a href="https://t.me/ECOVITALITY_BOT" class="view-all" data-ru="Все категории →" data-kz="Барлық санаттар →">Все категории →</a>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">💎</span>
+      <div class="cat-name" data-ru="Коллаген" data-kz="Коллаген">Коллаген</div>
+      <div class="cat-count" data-ru="69 товаров" data-kz="69 тауар">69 товаров</div>
+    </div>
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">🦠</span>
+      <div class="cat-name" data-ru="Пробиотики" data-kz="Пробиотиктер">Пробиотики</div>
+      <div class="cat-count" data-ru="54 товара" data-kz="54 тауар">54 товара</div>
+    </div>
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">🌿</span>
+      <div class="cat-name" data-ru="Глутатион" data-kz="Глутатион">Глутатион</div>
+      <div class="cat-count" data-ru="45 товаров" data-kz="45 тауар">45 товаров</div>
+    </div>
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">☀️</span>
+      <div class="cat-name" data-ru="Витамин D" data-kz="D Дәрумені">Витамин D</div>
+      <div class="cat-count" data-ru="38 товаров" data-kz="38 тауар">38 товаров</div>
+    </div>
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">✨</span>
+      <div class="cat-name" data-ru="Мультивитамины" data-kz="Мультивитаминдер">Мультивитамины</div>
+      <div class="cat-count" data-ru="62 товара" data-kz="62 тауар">62 товара</div>
+    </div>
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">🐟</span>
+      <div class="cat-name" data-ru="Омега-3" data-kz="Омега-3">Омега-3</div>
+      <div class="cat-count" data-ru="29 товаров" data-kz="29 тауар">29 товаров</div>
+    </div>
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">💜</span>
+      <div class="cat-name" data-ru="Женское здоровье" data-kz="Әйелдер денсаулығы">Женское здоровье</div>
+      <div class="cat-count" data-ru="47 товаров" data-kz="47 тауар">47 товаров</div>
+    </div>
+    <div class="cat-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <span class="cat-icon">🌱</span>
+      <div class="cat-name" data-ru="Женьшень" data-kz="Женьшень">Женьшень</div>
+      <div class="cat-count" data-ru="33 товара" data-kz="33 тауар">33 товара</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section style="background: var(--cream);">
+  <div class="section-header">
+    <div>
+      <p class="section-tag" data-ru="Популярное" data-kz="Танымал">Популярное</p>
+      <h2 class="section-title" data-ru="Хиты <em>продаж</em>" data-kz="Сату <em>хиттері</em>">Хиты <em>продаж</em></h2>
+    </div>
+    <a href="https://t.me/ECOVITALITY_BOT" class="view-all" data-ru="Все товары →" data-kz="Барлық тауарлар →">Все товары →</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <div class="product-img">
+        <div class="product-badge new" data-ru="Новинка" data-kz="Жаңалық">Новинка</div>
+        💊
+      </div>
+      <div class="product-info">
+        <div class="product-brand">BB Lab</div>
+        <div class="product-name">Collagen Biotin Plus 30</div>
+        <div class="product-desc" data-ru="Коллаген с биотином для кожи, волос и ногтей" data-kz="Тері, шаш және тырнақ үшін биотинмен коллаген">Коллаген с биотином для кожи, волос и ногтей</div>
+        <div class="product-footer">
+          <span class="product-price">15 000 ₸</span>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <div class="product-img">
+        <div class="product-badge" data-ru="В наличии" data-kz="Бар">В наличии</div>
+        🌿
+      </div>
+      <div class="product-info">
+        <div class="product-brand">BOTO</div>
+        <div class="product-name">Glutation Collagen Vitamin C</div>
+        <div class="product-desc" data-ru="Антиоксидантный комплекс с глутатионом и витамином C" data-kz="Глутатион мен С витаминімен антиоксидантты кешен">Антиоксидантный комплекс с глутатионом и витамином C</div>
+        <div class="product-footer">
+          <span class="product-price">10 000 ₸</span>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card" onclick="window.open('https://t.me/ECOVITALITY_BOT','_blank')">
+      <div class="product-img">
+        <div class="product-badge" data-ru="Хит" data-kz="Хит">Хит</div>
+        ☀️
+      </div>
+      <div class="product-info">
+        <div class="product-brand">H&B</div>
+        <div class="product-name">Triple Omega 3-6-9 Heart Health</div>
+        <div class="product-desc" data-ru="Тройная омега для здоровья сердца и сосудов" data-kz="Жүрек және қан тамырлары үшін үштік омега">Тройная омега для здоровья сердца и сосудов</div>
+        <div class="product-footer">
+          <span class="product-price">12 000 ₸</span>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="section-header">
+    <div>
+      <p class="section-tag" data-ru="Наши преимущества" data-kz="Біздің артықшылықтар">Наши преимущества</p>
+      <h2 class="section-title" data-ru="Почему выбирают <em>нас</em>" data-kz="Неліктен <em>бізді</em> таңдайды">Почему выбирают <em>нас</em></h2>
+    </div>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div class="why-title" data-ru="Только оригинал" data-kz="Тек түпнұсқа">Только оригинал</div>
+      <div class="why-text" data-ru="Мы работаем напрямую с корейскими производителями и гарантируем подлинность каждого товара" data-kz="Біз корей өндірушілерімен тікелей жұмыс жасаймыз және әрбір тауардың шынайылығына кепілдік береміз">Мы работаем напрямую с корейскими производителями и гарантируем подлинность каждого товара</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div class="why-title" data-ru="Экспертная консультация" data-kz="Сарапшылық кеңес">Экспертная консультация</div>
+      <div class="why-text" data-ru="Наши специалисты помогут подобрать витамины с учётом ваших целей и состояния здоровья" data-kz="Біздің мамандар мақсатыңыз бен денсаулық жағдайыңызды ескере отырып витаминдерді таңдауға көмектеседі">Наши специалисты помогут подобрать витамины с учётом ваших целей и состояния здоровья</div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div class="why-title" data-ru="Быстрый заказ в боте" data-kz="Ботта жылдам тапсырыс">Быстрый заказ в боте</div>
+      <div class="why-text" data-ru="Удобный Telegram-бот с каталогом из 900+ товаров. Заказывайте в любое время без звонков" data-kz="900+ тауардан тұратын каталогы бар ыңғайлы Telegram-бот. Кез келген уақытта қоңырауларсыз тапсырыс беріңіз">Удобный Telegram-бот с каталогом из 900+ товаров. Заказывайте в любое время без звонков</div>
+    </div>
+  </div>
+</section>
+
+<!-- TELEGRAM CTA -->
+<section class="tg-cta" id="contacts">
+  <p class="section-tag" data-ru="Удобный заказ" data-kz="Ыңғайлы тапсырыс">Удобный заказ</p>
+  <h2 class="section-title">
+    <span data-ru="Заказывайте через" data-kz="Арқылы тапсырыс беріңіз">Заказывайте через</span><br>
+    <em>Telegram Bot</em>
+  </h2>
+  <p class="tg-cta-text" data-ru="Открывайте каталог, выбирайте товары и оформляйте заказ прямо в Telegram — быстро, удобно, без лишних шагов." data-kz="Каталогты ашыңыз, тауарларды таңдаңыз және тікелей Telegram арқылы тапсырыс беріңіз — жылдам, ыңғайлы, артық қадамсыз.">
+    Открывайте каталог, выбирайте товары и оформляйте заказ прямо в Telegram — быстро, удобно, без лишних шагов.
+  </p>
+  <div class="tg-features">
+    <div class="tg-feature"><span class="tg-feature-icon">✦</span> <span data-ru="900+ товаров в наличии" data-kz="900+ тауар бар">900+ товаров в наличии</span></div>
+    <div class="tg-feature"><span class="tg-feature-icon">✦</span> <span data-ru="Быстрое оформление" data-kz="Жылдам рәсімдеу">Быстрое оформление</span></div>
+    <div class="tg-feature"><span class="tg-feature-icon">✦</span> <span data-ru="Консультация онлайн" data-kz="Онлайн кеңес">Консультация онлайн</span></div>
+    <div class="tg-feature"><span class="tg-feature-icon">✦</span> <span data-ru="Доставка по Казахстану" data-kz="Қазақстан бойынша жеткізу">Доставка по Казахстану</span></div>
+  </div>
+  <a href="https://t.me/ECOVITALITY_BOT" target="_blank" class="btn-primary" data-ru="Открыть Telegram бот →" data-kz="Telegram ботты ашу →">Открыть Telegram бот →</a>
+</section>
+
+<!-- FOOTER -->
+<footer id="delivery">
+  <div class="footer-top">
+    <div>
+      <span class="footer-logo">ecovitality</span>
+      <p class="footer-about" data-ru="Магазин оригинальных корейских витаминов, БАДов и косметики. Прямые поставки из Кореи по всему Казахстану." data-kz="Түпнұсқа корей витаминдері, БАД және косметика дүкені. Бүкіл Қазақстан бойынша Кореядан тікелей жеткізу.">
+        Магазин оригинальных корейских витаминов, БАДов и косметики. Прямые поставки из Кореи по всему Казахстану.
+      </p>
+      <div class="footer-social">
+        <a href="https://t.me/ECOVITALITY_BOT" class="social-link" target="_blank">✈</a>
+        <a href="#" class="social-link">📸</a>
+        <a href="#" class="social-link">💬</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-title" data-ru="Каталог" data-kz="Каталог">Каталог</div>
+      <ul class="footer-links">
+        <li><a href="https://t.me/ECOVITALITY_BOT" data-ru="Коллаген" data-kz="Коллаген">Коллаген</a></li>
+        <li><a href="https://t.me/ECOVITALITY_BOT" data-ru="Витамины" data-kz="Витаминдер">Витамины</a></li>
+        <li><a href="https://t.me/ECOVITALITY_BOT" data-ru="Пробиотики" data-kz="Пробиотиктер">Пробиотики</a></li>
+        <li><a href="https://t.me/ECOVITALITY_BOT" data-ru="Омега-3" data-kz="Омега-3">Омега-3</a></li>
+        <li><a href="https://t.me/ECOVITALITY_BOT" data-ru="Все категории" data-kz="Барлық санаттар">Все категории</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title" data-ru="Информация" data-kz="Ақпарат">Информация</div>
+      <ul class="footer-links">
+        <li><a href="#about" data-ru="О компании" data-kz="Компания туралы">О компании</a></li>
+        <li><a href="#delivery" data-ru="Доставка и оплата" data-kz="Жеткізу және төлем">Доставка и оплата</a></li>
+        <li><a href="#" data-ru="Возврат" data-kz="Қайтару">Возврат</a></li>
+        <li><a href="#" data-ru="Оферта" data-kz="Оферта">Оферта</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title" data-ru="Контакты" data-kz="Байланыс">Контакты</div>
+      <ul class="footer-links">
+        <li><a href="https://t.me/ECOVITALITY_BOT">Telegram бот</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#" data-ru="Алматы, Казахстан" data-kz="Алматы, Қазақстан">Алматы, Казахстан</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy" data-ru="© 2026 ecovitality. Все права защищены." data-kz="© 2026 ecovitality. Барлық құқықтар қорғалған.">© 2026 ecovitality. Все права защищены.</p>
+    <a href="https://t.me/ECOVITALITY_BOT" class="footer-tg" target="_blank">✈ @ECOVITALITY_BOT</a>
+  </div>
+</footer>
+
+<script>
+// Language switcher
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.querySelectorAll('[data-ru]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text) {
+      if (el.innerHTML.includes('<em>') || el.tagName === 'H2') {
+        el.innerHTML = text;
+      } else {
+        el.textContent = text;
+      }
+    }
+  });
+}
+
+// Scroll animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.cat-card, .product-card, .why-item, .about-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
